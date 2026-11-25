@@ -709,15 +709,13 @@ RDEPEND="
 	kde-frameworks/kconfig:6
 	media-fonts/symbols-nerd-font
 	media-libs/fontconfig
-	media-libs/mesa
+	media-libs/libglvnd
 	media-libs/vulkan-loader
 	x11-libs/libxkbcommon
 "
 BDEPEND="
 	virtual/pkgconfig
 "
-
-QA_FLAGS_IGNORED="usr/bin/fcitx5-osk.*"
 
 src_install() {
 	local bindir="$(cargo_target_dir)"
@@ -745,6 +743,7 @@ src_install() {
 	insinto /usr/share/dbus-1/system.d
 	doins pkg/share/dbus-1/system.d/fyi.fortime.Fcitx5OskKeyHelper.conf
 	systemd_dounit pkg/lib/systemd/system/fcitx5-osk-key-helper.service
+	newinitd "${FILESDIR}"/fcitx5-osk-key-helper.initd fcitx5-osk-key-helper
 
 	newicon -s scalable assets/icons/fcitx5-osk.svg fyi.fortime.Fcitx5Osk.svg
 
@@ -765,5 +764,6 @@ pkg_postinst() {
 
 	elog "Select \"Fcitx 5 Osk Kwin Launcher\" in System Settings > Keyboard > Virtual Keyboard."
 	elog "With the KWin launcher every key goes through the key helper, so enable it:"
-	elog "  systemctl enable --now fcitx5-osk-key-helper"
+	elog "  systemd: systemctl enable --now fcitx5-osk-key-helper"
+	elog "  OpenRC:  rc-update add fcitx5-osk-key-helper default"
 }
