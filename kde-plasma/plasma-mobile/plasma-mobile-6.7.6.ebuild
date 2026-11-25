@@ -1,4 +1,4 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,6 @@ LICENSE="Apache-2.0 BSD-2 CC0-1.0 CC-BY-SA-4.0 GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+ M
 	|| ( GPL-2 GPL-3 ) || ( LGPL-2.1 LGPL-3 )"
 SLOT="6"
 KEYWORDS="~arm64"
-IUSE="systemd"
 
 # libkwin has no stable ABI; the KWin plugins must match the 6.y series they were built against
 COMMON_DEPEND="
@@ -84,7 +83,7 @@ PATCHES=( "${FILESDIR}"/${P}-waydroid-include-ecmqmlmodule.patch )
 
 src_configure() {
 	local mycmakeargs=(
-		-DINSTALL_SYSTEMD_SERVICE=$(usex systemd)
+		-DINSTALL_SYSTEMD_SERVICE=ON
 	)
 	ecm_src_configure
 }
