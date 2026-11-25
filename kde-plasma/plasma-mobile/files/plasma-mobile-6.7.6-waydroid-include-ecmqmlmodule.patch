@@ -1,0 +1,17 @@
+ecm_add_qml_module() is called here before anything includes ECMQmlModule
+(PlasmaMacros.cmake includes it only inside plasma_add_applet()), so configuring
+fails with "Unknown CMake command ecm_add_qml_module". Include it in this directory
+only: ECMQmlModule sets QTP0001 to NEW for the including directory, which would move
+the qrc prefix of the other qt_add_qml_module() targets (initialstart loads
+qrc:org/kde/plasma/mobileinitialstart/... by path).
+
+--- a/components/waydroidintegrationplugin/CMakeLists.txt
++++ b/components/waydroidintegrationplugin/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ # SPDX-FileCopyrightText: 2025 Florian RICHER <florian.richer@protonmail.com>
+ # SPDX-License-Identifier: BSD-2-Clause
++include(ECMQmlModule)
++
+ 
+ set(waydroidintegrationplugin_SRCS
+     waydroidapplicationdbusobject.cpp

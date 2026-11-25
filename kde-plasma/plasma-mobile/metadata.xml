@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zakk@gentoozh.org</email>
+		<name>Zakk</name>
+	</maintainer>
+	<use>
+		<flag name="systemd">Install the upstream <pkg>sys-apps/systemd</pkg> unit that starts the Plasma Mobile session on tty1</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="kde-invent">plasma/plasma-mobile</remote-id>
+	</upstream>
+</pkgmetadata>
