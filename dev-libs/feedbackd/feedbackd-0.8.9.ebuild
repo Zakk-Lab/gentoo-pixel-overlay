@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# GURU's 0.8.9 plus glib-utils (gnome.mkenums_simple runs glib-mkenums) and the
+# GURU's ebuild plus glib-utils (gnome.mkenums_simple runs glib-mkenums) and the
 # gsettings schema cache update for org.sigxcpu.feedbackd.gschema.xml
 
 VALA_USE_DEPEND="vapigen"

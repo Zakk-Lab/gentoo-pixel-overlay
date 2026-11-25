@@ -8,7 +8,7 @@ Build, flash and rootfs scripts live in [gentoo-pixel7pro](https://github.com/Za
 | Package | Purpose |
 |---|---|
 | `kde-plasma/plasma-mobile`, `kde-apps/plasma-settings` | Plasma Mobile shell and settings |
-| `dev-libs/feedbackd` | haptic and sound feedback; GURU's 0.8.9 with two build fixes (`-r1` so it wins over GURU's copy) |
+| `dev-libs/feedbackd`, `dev-libs/feedbackd-device-themes`, `dev-libs/gmobile`, `sec-keys/openpgp-keys-phosh` | haptic and sound feedback; copies of GURU's ebuilds, feedbackd with two build fixes |
 | `app-i18n/fcitx5-osk` | touch keyboard for Fcitx 5 ([fortime/fcitx5-osk](https://github.com/fortime/fcitx5-osk)) |
 | `sys-firmware/cheetah-vendor-firmware` | haptics, AoC audio, speaker protection and Bluetooth firmware, unpacked from your own copy of Google's factory image |
 
@@ -17,12 +17,8 @@ Download `cheetah-cp4a.261105.040.a1` from <https://developers.google.com/androi
 
 ## Use
 
-feedbackd's dependencies (`dev-libs/gmobile`, `dev-libs/feedbackd-device-themes`, `sec-keys/openpgp-keys-phosh`) come from [GURU](https://wiki.gentoo.org/wiki/Project:GURU):
-
 ```sh
-eselect repository enable guru
 eselect repository add gentoo-pixel git https://github.com/Zakk-Lab/gentoo-pixel-overlay.git
-emaint sync -r guru
 emaint sync -r gentoo-pixel
 ```
 
