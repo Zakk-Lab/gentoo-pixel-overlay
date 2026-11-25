@@ -7,7 +7,7 @@ Build, flash and rootfs scripts live in [gentoo-pixel7pro](https://github.com/Za
 
 | Package | Purpose |
 |---|---|
-| `kde-plasma/plasma-mobile`, `kde-plasma/plasma-nano`, `kde-apps/plasma-settings` | Plasma Mobile shell and settings |
+| `kde-plasma/plasma-mobile`, `kde-apps/plasma-settings` | Plasma Mobile shell and settings |
 | `dev-libs/feedbackd`, `dev-libs/feedbackd-device-themes`, `dev-libs/gmobile`, `sec-keys/openpgp-keys-phosh` | haptic and sound feedback |
 | `app-i18n/fcitx5-osk` | touch keyboard for Fcitx 5 ([fortime/fcitx5-osk](https://github.com/fortime/fcitx5-osk)) |
 | `sys-firmware/cheetah-vendor-firmware` | haptics, AoC audio, speaker protection and Bluetooth firmware, unpacked from your own copy of Google's factory image |
@@ -20,6 +20,13 @@ Download `cheetah-cp4a.261105.040.a1` from <https://developers.google.com/androi
 ```sh
 eselect repository add gentoo-pixel git https://github.com/Zakk-Lab/gentoo-pixel-overlay.git
 emaint sync -r gentoo-pixel
+```
+
+`kde-plasma/plasma-mobile` needs `kde-plasma/plasma-nano` from ::gentoo, which is keyworded only `~amd64` there, so `~arm64` does not unmask it:
+
+```
+# /etc/portage/package.accept_keywords/plasma-mobile
+=kde-plasma/plasma-nano-6.7.6 **
 ```
 
 All packages are keyworded `~arm64` (some also `~amd64`).
